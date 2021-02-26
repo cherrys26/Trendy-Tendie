@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="good-sentiment">
+        <ion-icon name="flame"></ion-icon>
+        <ion-label>good-sentiment</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="bad-sentiment">
+        <ion-icon name="cut"></ion-icon>
+        <ion-label>bad-sentiment</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="watchlist">
+        <ion-icon name="star"></ion-icon>
+        <ion-label>watchlist</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="notifications">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-label>notifications</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>settings</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+  </ion-tabs>
 
 </ion-content>

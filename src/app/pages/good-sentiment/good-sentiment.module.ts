@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { GoodSentimentPageRoutingModule } from './good-sentiment-routing.module';
 
 import { GoodSentimentPage } from './good-sentiment.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GoodSentimentPageRoutingModule
+    GoodSentimentPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [GoodSentimentPage]
 })
-export class GoodSentimentPageModule {}
+export class GoodSentimentPageModule { }

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { BadSentimentPageRoutingModule } from './bad-sentiment-routing.module';
 
 import { BadSentimentPage } from './bad-sentiment.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BadSentimentPageRoutingModule
+    BadSentimentPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [BadSentimentPage]
 })

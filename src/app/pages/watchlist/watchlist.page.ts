@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-watchlist',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WatchlistPage implements OnInit {
 
-  constructor() { }
+  constructor(public platform: Platform) { }
 
   ngOnInit() {
   }
-
+  public devWidth = this.platform.width();
 }

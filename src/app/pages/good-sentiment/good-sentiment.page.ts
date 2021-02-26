@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-good-sentiment',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoodSentimentPage implements OnInit {
 
-  constructor() { }
+  constructor(public platform: Platform) { }
 
   ngOnInit() {
   }
+
+  public devWidth = this.platform.width();
 
 }

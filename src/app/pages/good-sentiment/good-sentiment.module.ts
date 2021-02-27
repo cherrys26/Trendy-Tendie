@@ -8,6 +8,8 @@ import { GoodSentimentPageRoutingModule } from './good-sentiment-routing.module'
 
 import { GoodSentimentPage } from './good-sentiment.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     GoodSentimentPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    ChartsModule,
   ],
   declarations: [GoodSentimentPage]
 })

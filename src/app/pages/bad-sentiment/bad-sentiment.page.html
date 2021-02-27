@@ -1,4 +1,4 @@
-<ion-header [hidden]="devWidth > 576">
+<ion-header [hidden]="devWidth > 800">
   <ion-toolbar>
     <ion-title>Bad Sentiment</ion-title>
     <app-logout slot="end"></app-logout>
@@ -7,60 +7,35 @@
 
 <ion-content>
   <ion-segment [(ngModel)]="selectedSegment">
-    <ion-segment-button value="Stocks">
+    <ion-segment-button value="stocks">
       <ion-label>Stonks</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="Crypto">
+    <ion-segment-button value="crypto">
       <ion-label>Crypto</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-  <!--Put segment content here-->
+
   <div [ngSwitch]="selectedSegment">
-    <div *ngSwitchCase="'Stocks'">
-      <br>
-      <ion-note>Stonks Chart</ion-note>
-      <br>
+
+    <div *ngSwitchCase="'stocks'">
+      <ion-note>
+        <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
+          filter out*</h5>
+      </ion-note>
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
     </div>
-    <!--Bookmark selection stuff-->
-    <div *ngSwitchCase="'Crypto'">
-      <br>
-      <ion-note>Crypto Chart </ion-note>
-      <br>
+    <div *ngSwitchCase="'crypto'">
+
+      <ion-note>
+        <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
+          filter out*</h5>
+      </ion-note>
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType">
+      </canvas>
     </div>
   </div>
-  <!-- <ion-segment value="Stocks" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" >
-    <ion-segment-button value="Stocks">
-      <ion-label>Stonks</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="Crypto">
-      <ion-label>Crypto</ion-label>
-    </ion-segment-button>
-  </ion-segment>
 
-  <ion-content [fullscreen]="true">
-    <ion-card *ngIf="segmentModel === 'Stocks'">
-      <ion-card-header>
-        <ion-card-subtitle>Segment Content</ion-card-subtitle>
-        <ion-card-title>All</ion-card-title>
-      </ion-card-header>
 
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card *ngIf="segmentModel === 'Crypto'">
-      <ion-card-header>
-        <ion-card-subtitle>Segment Content</ion-card-subtitle>
-        <ion-card-title>Favorites</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-  </ion-content> -->
 </ion-content>

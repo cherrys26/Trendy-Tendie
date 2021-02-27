@@ -1,4 +1,4 @@
-<ion-header [hidden]="devWidth > 576">
+<ion-header [hidden]="devWidth > 800">
   <ion-toolbar>
     <ion-title>Good Sentiment</ion-title>
     <app-logout slot="end"></app-logout>
@@ -15,20 +15,27 @@
     </ion-segment-button>
   </ion-segment>
 
-  <!--Put segment content here-->
-  <div [ngSwitch]="segmentSelected">
-    <!--Camera selection stuff-->
-    <div *ngSwitchCase="'Stocks'">
 
-      <ion-note>Stonks Chart</ion-note>
-      <br>
+  <div [ngSwitch]="segmentSelected">
+
+    <div *ngSwitchCase="'Stocks'">
+      <ion-note>
+        <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
+          filter out*</h5>
+      </ion-note>
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
     </div>
-    <!--Bookmark selection stuff-->
     <div *ngSwitchCase="'Crypto'">
 
-      <ion-note>Crypto Chart </ion-note>
-      <br>
+      <ion-note>
+        <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
+          filter out*</h5>
+      </ion-note>
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType">
+      </canvas>
     </div>
   </div>
+
 
 </ion-content>

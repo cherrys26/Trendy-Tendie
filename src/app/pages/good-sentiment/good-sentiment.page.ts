@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-good-sentiment',
@@ -8,19 +8,15 @@ import { Platform } from '@ionic/angular';
 })
 export class GoodSentimentPage implements OnInit {
 
-  segmentModel = "Stocks";
+  segmentSelected = "Stocks";
 
-  constructor(public platform: Platform) { }
+
+  constructor(public platform: Platform,
+    public navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
   public devWidth = this.platform.width();
-
-  segmentChanged(event) {
-    console.log(this.segmentModel);
-
-    console.log(event);
-  }
 
 }

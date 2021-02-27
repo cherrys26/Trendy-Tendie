@@ -6,7 +6,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment value="Stocks" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" >
+  <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment-button value="Stocks">
+      <ion-label>Stonks</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Crypto">
+      <ion-label>Crypto</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!--Put segment content here-->
+  <div [ngSwitch]="selectedSegment">
+    <div *ngSwitchCase="'Stocks'">
+      <br>
+      <ion-note>Stonks Chart</ion-note>
+      <br>
+    </div>
+    <!--Bookmark selection stuff-->
+    <div *ngSwitchCase="'Crypto'">
+      <br>
+      <ion-note>Crypto Chart </ion-note>
+      <br>
+    </div>
+  </div>
+  <!-- <ion-segment value="Stocks" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" >
     <ion-segment-button value="Stocks">
       <ion-label>Stonks</ion-label>
     </ion-segment-button>
@@ -39,6 +62,5 @@
         and climb a mountain or spend a week in the woods. Wash your spirit clean.
       </ion-card-content>
     </ion-card>
-  </ion-content>
+  </ion-content> -->
 </ion-content>
-

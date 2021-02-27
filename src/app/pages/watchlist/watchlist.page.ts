@@ -13,4 +13,5 @@ export class WatchlistPage implements OnInit {
   ngOnInit() {
   }
   public devWidth = this.platform.width();
+  
 }

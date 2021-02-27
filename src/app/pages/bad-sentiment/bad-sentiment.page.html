@@ -6,5 +6,39 @@
 </ion-header>
 
 <ion-content>
+  <ion-segment value="Stocks" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)" >
+    <ion-segment-button value="Stocks">
+      <ion-label>Stonks</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Crypto">
+      <ion-label>Crypto</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
+  <ion-content [fullscreen]="true">
+    <ion-card *ngIf="segmentModel === 'Stocks'">
+      <ion-card-header>
+        <ion-card-subtitle>Segment Content</ion-card-subtitle>
+        <ion-card-title>All</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="segmentModel === 'Crypto'">
+      <ion-card-header>
+        <ion-card-subtitle>Segment Content</ion-card-subtitle>
+        <ion-card-title>Favorites</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </ion-content>
+

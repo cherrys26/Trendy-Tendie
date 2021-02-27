@@ -16,15 +16,15 @@ export class LogoutComponent implements OnInit {
   async navigateToWelcome() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: 'Confirm Logout',
+      message: 'Are you sure you want to logout?',
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
         }, {
-          text: 'Logout',
+          text: "Okay  :'(",
           handler: () => {
             this.route.navigate([''])
           }

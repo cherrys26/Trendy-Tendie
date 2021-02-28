@@ -54,10 +54,15 @@ export class BadSentimentPage implements OnInit {
   constructor(public platform: Platform,
     public navCtrl: NavController,
     private http: HttpClient,
-    public screenOrientation: ScreenOrientation) { console.log(this.screenOrientation.type); this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT); }
+    public screenOrientation: ScreenOrientation) { console.log(this.screenOrientation.type); this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE); }
 
   ngOnInit() {
     this.getData();
+    screen.orientation.lock('landscape').then(function success() {
+      console.log("Successfully locked the orientation");
+    }, function error(errMsg) {
+      console.log("Error locking the orientation :: " + errMsg);
+    });
   }
 
   getData() {

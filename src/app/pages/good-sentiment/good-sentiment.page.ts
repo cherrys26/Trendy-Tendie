@@ -71,6 +71,12 @@ export class GoodSentimentPage implements OnInit {
   ngOnInit() {
     this.getData();
     console.log(this.screenOrientation.type);
+    if (this.platform.is('cordova')) {
+      this.platform.ready().then(() => {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+        console.log(this.screenOrientation.type);
+      })
+    };
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     window.addEventListener("orientationchange", function () {
       console.log(screen.orientation.type); // e.g. portrait

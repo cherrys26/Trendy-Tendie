@@ -4,6 +4,8 @@ import { NavController, Platform } from '@ionic/angular';
 import { ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx'
+
 @Component({
   selector: 'app-bad-sentiment',
   templateUrl: './bad-sentiment.page.html',
@@ -51,7 +53,8 @@ export class BadSentimentPage implements OnInit {
 
   constructor(public platform: Platform,
     public navCtrl: NavController,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    public screenOrientation: ScreenOrientation) { console.log(this.screenOrientation.type); this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT); }
 
   ngOnInit() {
     this.getData();

@@ -8,7 +8,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 import 'chartjs-plugin-zoom';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 

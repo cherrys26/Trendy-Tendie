@@ -1,6 +1,8 @@
 {
   "name": "trendy-tendie",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "fe5812e3"
 }

@@ -50,6 +50,7 @@ export class BadSentimentPage implements OnInit {
   stock = 'AAPL'
 
   selectedSegment = "stocks";
+  stockTime = "fifteenMinute";
 
   constructor(public platform: Platform,
     public navCtrl: NavController,

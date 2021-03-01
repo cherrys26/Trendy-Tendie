@@ -52,6 +52,8 @@ export class GoodSentimentPage implements OnInit {
   stock = 'AAPL'
 
   segmentSelected = "Stocks";
+  stockTime = "fifteenMinute";
+
   constructor(public platform: Platform,
     public navCtrl: NavController,
     private http: HttpClient,

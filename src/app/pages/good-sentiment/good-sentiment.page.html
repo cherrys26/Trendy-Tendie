@@ -19,24 +19,188 @@
   <div [ngSwitch]="segmentSelected">
 
     <div *ngSwitchCase="'Stocks'">
-      <ion-note>
-        <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
-          filter out*</h5>
-      </ion-note>
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
-      </canvas>
+      <ion-segment [(ngModel)]="stockTime">
+        <ion-segment-button value="oneMinute">
+          <ion-label>1 Min</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="fiveMinute">
+          <ion-label>5 Mins</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="fifteenMinute">
+          <ion-label>15 Mins</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="thirtyMinute">
+          <ion-label>30 Mins</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneHour">
+          <ion-label>1 Hour</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="fourHour">
+          <ion-label>4 Hours</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneDay">
+          <ion-label>1 Day</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneWeek">
+          <ion-label>1 Week</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneMonth">
+          <ion-label>1 Month</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneYear">
+          <ion-label>1 Year</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="stockTime">
+        <ion-note>
+          <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
+            filter out*</h5>
+        </ion-note>
+        <div *ngSwitchCase="'oneMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'fiveMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'fifteenMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'thirtyMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneHour'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'fourHour'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneDay'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneWeek'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneMonth'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneYear'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+      </div>
     </div>
+
     <div *ngSwitchCase="'Crypto'">
 
-      <ion-note>
-        <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
-          filter out*</h5>
-      </ion-note>
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType">
-      </canvas>
+      <ion-segment [(ngModel)]="stockTime">
+        <ion-segment-button value="oneMinute">
+          <ion-label>1 Min</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="fiveMinute">
+          <ion-label>5 Mins</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="fifteenMinute">
+          <ion-label>15 Mins</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="thirtyMinute">
+          <ion-label>30 Mins</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneHour">
+          <ion-label>1 Hour</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="fourHour">
+          <ion-label>4 Hours</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneDay">
+          <ion-label>1 Day</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneWeek">
+          <ion-label>1 Week</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneMonth">
+          <ion-label>1 Month</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="oneYear">
+          <ion-label>1 Year</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="stockTime">
+        <ion-note>
+          <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">*press stock to
+            filter out*</h5>
+        </ion-note>
+        <div *ngSwitchCase="'oneMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'fiveMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'fifteenMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'thirtyMinute'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneHour'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'fourHour'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneDay'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneWeek'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneMonth'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+        <div *ngSwitchCase="'oneYear'">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"
+            [colors]="chartColors">
+          </canvas>
+        </div>
+      </div>
     </div>
   </div>
-
 
 </ion-content>
 

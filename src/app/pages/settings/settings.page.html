@@ -1,12 +1,18 @@
 <ion-header [hidden]="devWidth > 800">
   <ion-toolbar>
     <ion-title>Settings</ion-title>
-    <app-logout slot="end"></app-logout>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-</ion-content>
+<ion-list>
+  <ion-item>
+    <ion-label>Theme</ion-label>
+    <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One" value="light">
+      <ion-select-option value="light">Light</ion-select-option>
+      <ion-select-option value="dark">Dark</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="navigateToWelcome()" vertical="bottom" expand="block" color="danger">Logout</ion-button>
+</ion-list>
 
 <app-chat-support></app-chat-support>

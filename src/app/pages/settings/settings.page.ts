@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-settings',
@@ -8,11 +9,38 @@ import { Platform } from '@ionic/angular';
 })
 export class SettingsPage implements OnInit {
 
-  constructor(public platform: Platform) { }
+  customActionSheetOptions: any = {
+    header: 'Please Select One',
+  };
+
+  constructor(public platform: Platform, private alertController: AlertController, private route: Router) { }
 
   ngOnInit() {
+
   }
 
   public devWidth = this.platform.width()
 
+  async navigateToWelcome() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm Logout',
+      message: 'Are you sure you want to logout?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: "Okay  :'(",
+          handler: () => {
+            this.route.navigate([''])
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }
 }

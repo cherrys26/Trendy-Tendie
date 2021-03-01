@@ -52,7 +52,7 @@ export class GoodSentimentPage implements OnInit {
   stock = 'AAPL'
 
   segmentSelected = "Stocks";
-  stockTime = "fifteenMinute";
+  stockTime = "oneDay";
 
   constructor(public platform: Platform,
     public navCtrl: NavController,

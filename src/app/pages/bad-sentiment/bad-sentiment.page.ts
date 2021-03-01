@@ -50,20 +50,23 @@ export class BadSentimentPage implements OnInit {
   stock = 'AAPL'
 
   selectedSegment = "stocks";
-  stockTime = "fifteenMinute";
+  stockTime = "oneDay";
 
   constructor(public platform: Platform,
     public navCtrl: NavController,
     private http: HttpClient,
-    public screenOrientation: ScreenOrientation) { console.log(this.screenOrientation.type); this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE); }
+    public screenOrientation: ScreenOrientation) {
+    console.log(this.screenOrientation.type);
+    if (this.platform.is('cordova')) {
+      this.platform.ready().then(() => {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+        console.log(this.screenOrientation.type);
+      })
+    }
+  }
 
   ngOnInit() {
     this.getData();
-    screen.orientation.lock('landscape').then(function success() {
-      console.log("Successfully locked the orientation");
-    }, function error(errMsg) {
-      console.log("Error locking the orientation :: " + errMsg);
-    });
   }
 
   getData() {

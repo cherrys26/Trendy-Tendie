@@ -7,9 +7,11 @@ ion-col {
 }
 
 ion-row {
-    margin-left: -0.5em;
+    // margin-left: -0.5em;
     width: 100%;
+    // margin-top: -15px;
 }
+
 
 #image {
     text-align: right;
@@ -29,4 +31,9 @@ ion-row {
 }
 #price {
     color: rgb(0, 255, 0);
+}
+
+#change,
+#sentiment {
+    margin-left: -4px;
 }

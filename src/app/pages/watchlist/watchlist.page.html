@@ -30,56 +30,64 @@
     </ion-item>
 
   </ion-list>
-  <ion-list>
-    <ion-item-sliding>
-
-      <ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col col-3>
-              <ion-label>
-                <h2>TSLA</h2>
-                <h4 id="price">$621.44</h4>
-              </ion-label>
-            </ion-col>
-            <ion-col col-5>
-              <ion-label>
-                <h3>Positive Sentiment <p id="positive-sentiment">77%</p>
-                </h3>
-                <h3>Negative Sentiment <p id="negative-sentiment">23%</p>
-                </h3>
-              </ion-label>
-            </ion-col>
-            <ion-col col-4 id="change">
-              <ion-label>
-                <h3>Change <p id="positive-change"> 8% </p>
-                </h3>
-                <h3>Change <p id="negative-change"> 31%</p>
-                </h3>
-              </ion-label>
-            </ion-col>
-            <ion-col id="image">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-      <ion-item-options side="start">
-        <ion-item-option (click)="moveToPortfolio()">Move to Portfolio</ion-item-option>
-      </ion-item-options>
-      <ion-item-options side="end">
-        <ion-item-option (click)="delete()">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
 
   <div [ngSwitch]="homepage">
 
     <div *ngSwitchCase="'watchlist'">
       <div [ngSwitch]="timeline">
         <div *ngSwitchCase="'oneDay'">
-          oneday
+          <ion-list [hidden]="shouldHide">
+            <ion-item-sliding>
+              <ion-item>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="2.75" size-md>
+                      <ion-label>
+                        <h3>TSLA</h3>
+                      </ion-label>
+                    </ion-col>
+                    <ion-col size="5.25" size-md>
+                      <ion-label>
+                        <h3>Positive Sentiment <span id="positive-sentiment">77%</span>
+                        </h3>
+                      </ion-label>
+                    </ion-col>
+                    <ion-col size="4" size-md>
+                      <ion-label>
+                        <h3>Change <span id="positive-change"> 8% </span>
+                        </h3>
+                      </ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="2.75" size-md>
+                      <ion-label>
+                        <h4 id="price">$621.44</h4>
+                      </ion-label>
+                    </ion-col>
+                    <ion-col size="5.25" size-md>
+                      <ion-label>
+                        <h3>Negative Sentiment <span id="negative-sentiment">23%</span>
+                        </h3>
+                      </ion-label>
+                    </ion-col>
+                    <ion-col size="4" size-md>
+                      <ion-label>
+                        <h3>Change <span id="negative-change"> 31%</span>
+                        </h3>
+                      </ion-label>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+              <ion-item-options side="start">
+                <ion-item-option color="success" (click)="moveToPortfolio()">Move to Portfolio</ion-item-option>
+              </ion-item-options>
+              <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="delete()">Delete</ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
         </div>
         <div *ngSwitchCase="'oneWeek'">
           1 WEek

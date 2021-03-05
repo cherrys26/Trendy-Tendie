@@ -54,35 +54,20 @@ export class GoodSentimentPage implements OnInit {
   segmentSelected = "Stocks";
   stockTime = "oneDay";
 
+
   constructor(public platform: Platform,
     public navCtrl: NavController,
     private http: HttpClient,
     public screenOrientation: ScreenOrientation) {
     console.log(this.screenOrientation.type);
-    if (this.platform.is('cordova')) {
-      this.platform.ready().then(() => {
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-        console.log(this.screenOrientation.type);
-      })
-    };
-    window.addEventListener("orientationchange", function () {
-      console.log(screen.orientation.type); // e.g. portrait
-    });
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    console.log(this.screenOrientation.type);
   }
+
 
   ngOnInit() {
     this.getData();
-    console.log(this.screenOrientation.type);
-    if (this.platform.is('cordova')) {
-      this.platform.ready().then(() => {
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-        console.log(this.screenOrientation.type);
-      })
-    };
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    window.addEventListener("orientationchange", function () {
-      console.log(screen.orientation.type); // e.g. portrait
-    });
+
   }
 
   getData() {
@@ -104,5 +89,6 @@ export class GoodSentimentPage implements OnInit {
       });
   }
   public devWidth = this.platform.width();
+
 
 }

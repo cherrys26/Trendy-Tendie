@@ -10,8 +10,11 @@ export class WatchlistPage implements OnInit {
 
   constructor(public platform: Platform) { }
 
+  homepage = "watchlist";
+  timeline = "oneDay";
+
   ngOnInit() {
   }
   public devWidth = this.platform.width();
-  
+
 }

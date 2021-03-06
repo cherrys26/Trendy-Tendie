@@ -6,12 +6,9 @@ ion-col {
     align-self: center;
 }
 
-ion-row {
-    // margin-left: -0.5em;
-    width: 100%;
-    // margin-top: -15px;
+ion-list {
+    padding: 0px;
 }
-
 
 #image {
     text-align: right;
@@ -33,7 +30,3 @@ ion-row {
     color: rgb(0, 255, 0);
 }
 
-#change,
-#sentiment {
-    margin-left: -4px;
-}

@@ -1,0 +1,46 @@
+<ion-title style="margin-bottom: 10px; margin-top: 10px;">Filter by:</ion-title>
+
+<ion-list>
+  <ion-item>
+    <span class="filterTitle">
+      Market Cap: </span>
+    Min
+    <ion-input>
+    </ion-input>
+    --
+    <ion-input>
+    </ion-input>
+    Max
+  </ion-item>
+  <ion-item>
+    <span class="filterTitle">
+      Volume:</span>
+    Min
+    <ion-input>
+    </ion-input>
+    --
+    <ion-input>
+    </ion-input>
+    Max
+  </ion-item>
+  <ion-item>
+    <span class="filterTitle">
+      Price:
+    </span>
+    Min
+    <ion-input>
+    </ion-input>
+    --
+    <ion-input>
+    </ion-input>
+    Max
+  </ion-item>
+</ion-list>
+<ion-buttons style="justify-content: space-around;">
+  <ion-button (click)="cancel()">
+    Cancel
+  </ion-button>
+  <ion-button (click)="filter()">
+    Okay
+  </ion-button>
+</ion-buttons>

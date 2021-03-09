@@ -4,11 +4,12 @@ import { LogoComponent } from './logo/logo.component';
 import { UptrendComponent } from './uptrend/uptrend.component';
 import { ChatSupportComponent } from './chat-support/chat-support.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { PopoverComponent } from './popover/popover.component';
 
 
 @NgModule({
-  declarations: [LogoComponent, UptrendComponent, ChatSupportComponent, TimelineComponent],
-  exports: [LogoComponent, UptrendComponent, ChatSupportComponent, TimelineComponent],
+  declarations: [LogoComponent, UptrendComponent, ChatSupportComponent, TimelineComponent, PopoverComponent],
+  exports: [LogoComponent, UptrendComponent, ChatSupportComponent, TimelineComponent, PopoverComponent],
   imports: [
     CommonModule
   ]

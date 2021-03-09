@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Stocks</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover()">
+        <ion-icon slot="icon-only" name="funnel" style="font-size: 20px;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -20,6 +25,11 @@
 
   <ion-list>
     <ion-item>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon slot="icon-only" name="filter-outline" style="font-size: 20px;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
       <ion-select interface="popover" [(ngModel)]="timeline" slot="end">
         <app-timeline></app-timeline>
       </ion-select>

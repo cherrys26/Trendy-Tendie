@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../../components/popover/popover.component';
+
+
 @Component({
   selector: 'app-good-sentiment',
   templateUrl: './good-sentiment.page.html',
@@ -6,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoodSentimentPage implements OnInit {
 
-  constructor() {
+  constructor(public popoverController: PopoverController) {
   }
 
   timeline = "oneDay";
@@ -16,6 +20,15 @@ export class GoodSentimentPage implements OnInit {
 
   }
 
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      cssClass: 'test',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
 
 
 }

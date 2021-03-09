@@ -53,3 +53,13 @@
 .my-custom-class .alert-head.sc-ion-alert-md + .alert-message.sc-ion-alert-md {
     padding-top: 10px;
 }
+
+.test .popover-content.sc-ion-popover-md {
+    left: 0px !important;
+    transform-origin: right top;
+    width: -webkit-fill-available;
+}
+
+.test .filterTitle {
+    width: 90px;
+}

@@ -23,7 +23,6 @@ export class SettingsPage implements OnInit {
 
   async navigateToWelcome() {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
       header: 'Confirm Logout',
       message: 'Are you sure you want to logout?',
       buttons: [

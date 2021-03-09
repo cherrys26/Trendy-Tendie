@@ -1,4 +1,4 @@
-<ion-header [hidden]="devWidth > 800">
+<ion-header>
   <ion-toolbar>
     <ion-title>
       <ion-segment [(ngModel)]="homepage">
@@ -13,19 +13,16 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-card >
+  test
+</ion-card>
+
 <ion-content fullscreen>
   <ion-searchbar animated placeholder="Search Stonk or Crypto"></ion-searchbar>
   <ion-list>
     <ion-item id="time">
       <ion-select interface="popover" [(ngModel)]="timeline" slot="end">
-        <ion-select-option value="oneDay">1 Day</ion-select-option>
-        <ion-select-option value="oneWeek">1 Week</ion-select-option>
-        <ion-select-option value="oneMonth">1 Month</ion-select-option>
-        <ion-select-option value="threeMonths">3 Months</ion-select-option>
-        <ion-select-option value="sixMonths">6 Months</ion-select-option>
-        <ion-select-option value="oneYear">1 Year</ion-select-option>
-        <ion-select-option value="threeYears">3 Years</ion-select-option>
-        <ion-select-option value="allTime">All Time</ion-select-option>
+        <app-timeline></app-timeline>
       </ion-select>
     </ion-item>
 
@@ -81,7 +78,12 @@
                 </ion-grid>
               </ion-item>
               <ion-item-options side="start">
-                <ion-item-option color="success" (click)="moveToPortfolio()">Move to Portfolio</ion-item-option>
+                <ion-item-option style="text-align: center;" color="success" (click)="moveToPortfolio()">Move to
+                  <br /> Portfolio
+                </ion-item-option>
+                <ion-item-option style="text-align: center;" color="warning" (click)="moveToWatchlist()">Move to <br />
+                  Watchlist
+                </ion-item-option>
               </ion-item-options>
               <ion-item-options side="end">
                 <ion-item-option color="danger" (click)="delete()">Delete</ion-item-option>

@@ -1,11 +1,35 @@
-<ion-header [hidden]="devWidth > 800">
+<!-- <ion-header [hidden]="devWidth > 800">
   <ion-toolbar>
     <ion-title>Notifications</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-list>
+
+<ion-button fill="clear" name="add" class="myicon22" (click)="hasSearchnot($event)"
+  style="font-size: 20px;">
+  <ion-searchbar disabled *ngIf="!HasSearch"></ion-searchbar>
+  <ion-button *ngIf="HasSearch" (click)="hideSearchbar()">close</ion-button>
+</ion-button>
+
+
+
+<ion-searchbar *ngIf="HasSearch" selected [(ngModel)]="stock" (input)="getData($event); getPrice($event)"
+  (search)="getData($event); getPrice($event)"></ion-searchbar>
+
+<ion-content>
+  <ion-list *ngIf="HasSearch">
+    <ion-item *ngFor="let item of finalproductsearch">
+      <ion-thumbnail item-start>
+        <img src="{{images.pro_images}}">
+      </ion-thumbnail>
+      {{ item.product_name }}
+    </ion-item>
+    <ion-item>
+      test data
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!HasSearch">
 
     <ion-item>
       <ion-label>
@@ -30,5 +54,96 @@
       </ion-label>
     </ion-item>
   </ion-list>
-</ion-content>
+</ion-content> -->
 
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event); searchChange($event)"
+    placeholder="Search by Ticker">
+  </ion-searchbar>
+
+  <!-- <ion-list>
+
+    <ion-item *ngIf="data">
+      <ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col>{{ data.currency }}</ion-col>
+            <ion-col>{{ data.ipo }}</ion-col>
+            <ion-col>
+              {{ data.ticker }}
+              <h3>{{ data.name }}</h3>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+
+    </ion-item>
+
+  </ion-list> -->
+
+  <ion-list [hidden]="shouldHide">
+    <ion-item-sliding>
+      <ion-item *ngIf="data">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2.5" size-md>
+              <ion-label>
+                <h3>{{data.ticker}}</h3>
+              </ion-label>
+            </ion-col>
+            <ion-col size="6" size-md>
+              <ion-label>
+                <h3>Positive Sentiment <span id="positive-sentiment">77%</span>
+                </h3>
+              </ion-label>
+            </ion-col>
+            <ion-col size="3.5" size-md>
+              <ion-label>
+                <h3>Change <span id="positive-change"> 8% </span>
+                </h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2.5" size-md>
+              <ion-label *ngFor="let item of (results | async)">
+                <h4 id="price">${{item.c}}</h4>
+              </ion-label>
+            </ion-col>
+            <ion-col size="6" size-md>
+              <ion-label>
+                <h3>Negative Sentiment <span id="negative-sentiment">23%</span>
+                </h3>
+              </ion-label>
+            </ion-col>
+            <ion-col size="3.5" size-md>
+              <ion-label>
+                <h3>Change <span id="negative-change"> 31%</span>
+                </h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option style="text-align: center;" color="success" (click)="moveToPortfolio()">Move to
+          <br /> Portfolio
+        </ion-item-option>
+        <ion-item-option style="text-align: center;" color="warning" (click)="moveToWatchlist()">Move to <br />
+          Watchlist
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="delete()">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

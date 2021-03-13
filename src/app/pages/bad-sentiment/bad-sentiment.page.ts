@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { PopoverComponent } from '../../components/popover/popover.component';
+import { PopoverComponent } from '../../components/popover/stock-crypto-filter/popover.component';
 
 @Component({
   selector: 'app-bad-sentiment',
@@ -13,10 +14,15 @@ export class BadSentimentPage implements OnInit {
   timeline = "oneDay";
   goodBad = "good";
 
-  constructor(public popoverController: PopoverController) {
+  constructor(public popoverController: PopoverController,
+    private router: Router) {
   }
 
   ngOnInit() {
+  }
+
+  navigate() {
+    this.router.navigate(['charts'])
   }
 
   async presentPopover(ev: any) {

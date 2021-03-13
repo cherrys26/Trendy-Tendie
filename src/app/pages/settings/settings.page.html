@@ -1,4 +1,4 @@
-<ion-header [hidden]="devWidth > 800">
+<ion-header>
   <ion-toolbar>
     <ion-title>Settings</ion-title>
   </ion-toolbar>
@@ -6,15 +6,15 @@
 
 <ion-content fullscreen>
   <ion-list>
-    <ion-item-divider color="light">
-      <ion-label style="font-size:18px;">Profile</ion-label>
+    <ion-item-divider color="white">
+      <ion-label style="font-size:20px;"><strong>General</strong></ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label>Theme</ion-label>
+      <ion-label>Default homepage</ion-label>
       <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
+        value="watchlist">
+        <ion-select-option value="watchlist">Watchlist</ion-select-option>
+        <ion-select-option value="portfolio">Portfolio</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -25,117 +25,31 @@
         <ion-select-option value="dark">Dark</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item-divider color="light">
-      <ion-label style="font-size:18px;">Background</ion-label>
+
+    <ion-item-divider color="white">
+      <ion-label style="font-size:20px;"><strong>Profile</strong></ion-label>
     </ion-item-divider>
     <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
+      <ion-label>Name: </ion-label>
+      <ion-input placeholder="Steve Cherrys"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
+      <ion-label>Username: </ion-label>
+      <ion-input placeholder="Cherrys26"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
+      <ion-label>Password: </ion-label>
+      <ion-input type="password" placeholder="Password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
+      <ion-label>Email: </ion-label>
+      <ion-input placeholder="stevecherrys@gmail.com"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item-divider color="light">
-      <ion-label style="font-size:18px;">Example Setting</ion-label>
+
+    <ion-item-divider color="white">
+      <ion-label style="font-size:20px;"><strong>Contact Us</strong></ion-label>
     </ion-item-divider>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Theme</ion-label>
-      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One"
-        value="light">
-        <ion-select-option value="light">Light</ion-select-option>
-        <ion-select-option value="dark">Dark</ion-select-option>
-      </ion-select>
-    </ion-item>
   </ion-list>
+
   <ion-button (click)="navigateToWelcome()" vertical="bottom" expand="block" color="danger">Logout</ion-button>
 </ion-content>
-

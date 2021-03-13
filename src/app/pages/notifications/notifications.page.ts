@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular';
+import { ModalController, Platform, PopoverController } from '@ionic/angular';
 import { SearchbarComponent } from 'src/app/components/searchbar/searchbar.component';
 import { StockinfoService } from 'src/app/services/stockinfo.service';
 import { Observable } from 'rxjs';
+import { AlertsComponent } from '../../components/popover/alerts-filter/alerts.component';
 
 @Component({
   selector: 'app-notifications',
@@ -12,9 +13,17 @@ import { Observable } from 'rxjs';
 })
 export class NotificationsPage implements OnInit {
 
-  // stock = "GME"
+  alerts = "stocks";
+  alertSetting = "watchport";
+
+  visible = true;
+  toggle() {
+    this.visible = !this.visible;
+  }
+
+  stock = "GME"
   // restProvider: any;
-  // finalsearchproduct: string;
+  finalsearchproduct: string;
   // searchproduct: any;
 
   results: Observable<any>;
@@ -22,18 +31,29 @@ export class NotificationsPage implements OnInit {
   searchTerm: string = '';
 
   constructor(public platform: Platform,
-    // private http: HttpClient,
+    private http: HttpClient,
     // private modalController: ModalController,
-    private stockService: StockinfoService) { }
+    private stockService: StockinfoService,
+    private popoverController: PopoverController) { }
 
-  // stockTitle: any;
-  // stockSymbol: any;
-  // stockClosePrice: any;
-  // stockOpenPrice: any;
-  // stockPrices: any;
+  stockTitle: any;
+  stockSymbol: any;
+  stockClosePrice: any;
+  stockOpenPrice: any;
+  stockPrices: any;
 
   ngOnInit() {
 
+  }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: AlertsComponent,
+      cssClass: 'test',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
   searchChanged() {
@@ -48,42 +68,43 @@ export class NotificationsPage implements OnInit {
     console.log(this.searchTerm)
   }
 
-  // HasSearch: boolean;
-  // hasSearchnot(e) {
-  //   console.log("hasearch searchbar", this.HasSearch);
+  HasSearch: boolean;
+  hasSearchnot(e) {
+    console.log("hasearch searchbar", this.HasSearch);
 
-  //   if (e.target.classList.contains('myicon22')) {
-  //     this.finalsearchproduct = " ";
-  //     this.HasSearch = !this.HasSearch;
+    if (e.target.classList.contains('myicon22')) {
+      this.finalsearchproduct = " ";
+      this.HasSearch = !this.HasSearch;
 
-  //   }
-  // }
-  // hideSearchbar(e) {
-  //   if (!e.target.classList.contains('myicon22')) {
+    }
+  }
+  hideSearchbar(e) {
+    if (!e.target.classList.contains('myicon22')) {
 
-  //     if (this.HasSearch == true) {
-  //       this.HasSearch = false;
-  //       this.finalsearchproduct = " ";
-  //     }
-  //   }
-  // }
+      if (this.HasSearch == true) {
+        this.HasSearch = false;
+        this.finalsearchproduct = " ";
+      }
+    }
+  }
 
-  // getData() {
-  //   return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${this.stock}&token=c1427on48v6s4a2e2mog`)
-  //     .subscribe(res => {
+  getData() {
+    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${this.stock}&token=c1427on48v6s4a2e2mog`)
+      .subscribe(res => {
 
-  //       this.stockTitle = [];
-  //       this.stockSymbol = [];
+        this.stockTitle = [];
+        this.stockSymbol = [];
 
-  //       this.stockTitle.push(res['name']);
-  //       this.stockSymbol.push(res['ticker']);
+        this.stockTitle.push(res['name']);
+        this.stockSymbol.push(res['ticker']);
 
-  //       console.log('data:', this.stockTitle);
-  //       console.log('data:', this.stockSymbol);
-  //     })
+        console.log('data:', this.stockTitle);
+        console.log('data:', this.stockSymbol);
+      })
 
 
-  // }
+  }
+
 
 
   // getPrice() {

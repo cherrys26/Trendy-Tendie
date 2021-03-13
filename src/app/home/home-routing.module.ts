@@ -9,7 +9,9 @@ const routes: Routes = [
     component: HomePage,
     children: [
       { path: 'good-sentiment', loadChildren: () => import('../pages/good-sentiment/good-sentiment.module').then(m => m.GoodSentimentPageModule) },
+      { path: 'good-sentiment/charts', loadChildren: () => import('../pages/charts/charts.module').then(m => m.ChartsPageModule) },
       { path: 'bad-sentiment', loadChildren: () => import('../pages/bad-sentiment/bad-sentiment.module').then(m => m.BadSentimentPageModule) },
+      { path: 'bad-sentiment/charts', loadChildren: () => import('../pages/charts/charts.module').then(m => m.ChartsPageModule) },
       { path: 'watchlist', loadChildren: () => import('../pages/watchlist/watchlist.module').then(m => m.WatchlistPageModule) },
       { path: 'notifications', loadChildren: () => import('../pages/notifications/notifications.module').then(m => m.NotificationsPageModule) },
       { path: 'settings', loadChildren: () => import('../pages/settings/settings.module').then(m => m.SettingsPageModule) },

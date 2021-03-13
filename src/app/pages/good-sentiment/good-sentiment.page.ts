@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { StockinfoService } from 'src/app/services/stockinfo.service';
-import { PopoverComponent } from '../../components/popover/popover.component';
+import { PopoverComponent } from '../../components/popover/stock-crypto-filter/popover.component';
 
 
 @Component({
@@ -17,13 +18,15 @@ export class GoodSentimentPage implements OnInit {
   searchTerm: string = '';
 
   constructor(public popoverController: PopoverController,
-    private stockService: StockinfoService) {
+    private stockService: StockinfoService,
+    private router: Router) {
   }
 
   timeline = "oneDay";
   goodBad = "good";
 
   ngOnInit() {
+    console.log(this.stockService.stockName);
 
   }
 
@@ -37,14 +40,14 @@ export class GoodSentimentPage implements OnInit {
     return await popover.present();
   }
 
-  searchChanged() {
-    this.stockService.stockOne().subscribe(result => {
-      this.data = result;
-    });
-    console.log(this.stockService);
-    console.log(this.stockService.stockOne());
-    console.log(this.stockService);
-  }
+  // searchChanged() {
+  //   this.stockService.stockOne().subscribe(result => {
+  //     this.data = result;
+  //   });
+  //   console.log(this.stockService);
+  //   console.log(this.stockService.stockOne());
+  //   console.log(this.stockService);
+  // }
 
 
   searchChange() {
@@ -53,6 +56,10 @@ export class GoodSentimentPage implements OnInit {
     console.log(this.stockService)
     console.log(this.stockService.searchPrice)
     console.log(this.searchTerm)
+  }
+
+  navigate() {
+    this.router.navigate(['charts'])
   }
 
 

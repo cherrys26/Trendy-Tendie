@@ -1,0 +1,61 @@
+<ion-title style="margin-bottom: 10px; margin-top: 10px;">Filter by:</ion-title>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Timeline: </ion-label>
+    <ion-select multiple="true">
+      <app-timeline></app-timeline>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <span>
+      Top Gainers: </span>
+    <ion-checkbox checked="true" slot="end"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <span>
+      Top Losers: </span>
+    <ion-checkbox checked="true" slot="end"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-segment [(ngModel)]="alertSetting">
+      <ion-segment-button value="watchport">
+        <ion-label>
+          Only from <br />Watchlist/Portfolio
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="all">
+        <ion-label>
+          All
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sentiment increases past: </ion-label>
+    <ion-input></ion-input>%
+  </ion-item>
+  <ion-item>
+    <ion-label>Sentiment decreases past: </ion-label>
+    <ion-input></ion-input>%
+  </ion-item>
+  <ion-item>
+    <span>
+      Positive Sentiment > Negative Sentiment </span>
+    <ion-checkbox checked="true" slot="end"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <span>
+      Negative Sentiment > Positive Sentiment </span>
+    <ion-checkbox checked="true" slot="end"></ion-checkbox>
+  </ion-item>
+
+</ion-list>
+<ion-buttons style="justify-content: space-around;" cancelText="Nah" okText="Okay!">
+  <ion-button (click)="cancel()">
+    Cancel
+  </ion-button>
+  <ion-button (click)="filter()">
+    Okay
+  </ion-button>
+</ion-buttons>

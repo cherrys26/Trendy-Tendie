@@ -15,7 +15,7 @@ export class StockinfoService {
   startDate = '1615352400';
   endDate = '1615438800';
 
-  sentimentOne: "AAPL"
+  stockName: "AAPL"
 
   apiKey = 'c1427on48v6s4a2e2mog';
   constructor(private http: HttpClient) { }
@@ -23,8 +23,9 @@ export class StockinfoService {
   searchStock(ticker: string) {
     return this.http.get(`${this.urlName}?symbol=${encodeURI(ticker)}&token=${this.apiKey}`)
   }
-  stockOne() {
-    return this.http.get(`${this.urlName}?symbol=${this.sentimentOne}&token=${this.apiKey}`)
+
+  stockOne(stockName: string) {
+    return this.http.get(`${this.urlName}?symbol=${encodeURI(stockName)}&token=${this.apiKey}`)
   }
 
   searchPrice(ticker: string): Observable<any> {

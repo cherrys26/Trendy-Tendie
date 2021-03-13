@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NavController, Platform } from '@ionic/angular';
+import { ChartDataSets } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -8,9 +12,76 @@ import { ModalController } from '@ionic/angular';
 })
 export class ChartsPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  //Data
+  chartData: ChartDataSets[] = [
+    { data: [], label: 'AAPL' },
+    { data: [50, 60, 70, 80, 90, 100, 120, 130, 40, 80], label: 'Test' },
+  ];
+  chartLabels: Label[];
+
+  //chart options
+
+  chartOptions = {
+    responsive: true,
+    title: {
+      display: true,
+      text: 'historical closing price'
+    },
+    pan: {
+      enabled: true,
+      mode: 'xy'
+    },
+    zoom: {
+      enabled: true,
+      mode: 'xy'
+    }
+  };
+
+  chartColors: Color[] = [
+    {
+      borderColor: '#000000',
+    }
+  ];
+
+  chartType = 'line';
+  showLegend = false;
+
+  //for Search on chart
+  stock = 'AAPL'
+
+  segmentSelected = "Stocks";
+  stockTime = "oneDay";
+
+
+  constructor(public platform: Platform,
+    public navCtrl: NavController,
+    private http: HttpClient,
+    private modalCtrl: ModalController) {
+  }
+
 
   ngOnInit() {
+    this.getData();
+
+  }
+
+  getData() {
+    this.http.get(`https://financialmodelingprep.com/api/v3/historical-price-full/${this.stock}?from=2020-03-12&to=2020-08-12&apikey=demo`)
+      .subscribe(res => {
+        console.log('Res: ', res);
+        const history = res['historical'];
+
+        this.chartData[0].data = [];
+
+        this.chartLabels = [];
+
+        for (let entry of history) {
+          this.chartLabels.push(entry.date);
+          this.chartData[0].data.push(entry['close']);
+        }
+        console.log('data:', this.chartData);
+        console.log('data:', this.chartLabels);
+      });
   }
 
   back() {

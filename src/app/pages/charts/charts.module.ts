@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ChartsPageRoutingModule } from './charts-routing.module';
 
 import { ChartsPage } from './charts.page';
+import { ChartsModule } from 'ng2-charts'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ChartsPageRoutingModule
+    ChartsPageRoutingModule,
+    ChartsModule,
   ],
   declarations: [ChartsPage]
 })
-export class ChartsPageModule {}
+export class ChartsPageModule { }

@@ -8,25 +8,71 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-list>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-avatar>
-      <ion-label>
-        <h2>Support</h2>
-        <h4>Hello, how can we help today?</h4>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="end">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-avatar>
-      <ion-label>
-        <h2>User</h2>
-        <h4>I really like your app, thank you!</h4>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+<ion-content>
+
+  <ion-segment scrollable [(ngModel)]="stockTime">
+    <ion-segment-button value="oneDay">
+      <ion-label>1D</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="oneWeek">
+      <ion-label>1W</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="oneMonth">
+      <ion-label>1M</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="threeMonth">
+      <ion-label>3M</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="oneYear">
+      <ion-label>1Y</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="threeYear">
+      <ion-label>3Y</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="allTime">
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="stockTime">
+    <ion-note>
+      <h5 style="text-align: right; font-size: 10px; padding-top:5px; padding-bottom: 0; margin: 0;">
+        *press stock
+        to
+        filter out*</h5>
+    </ion-note>
+    <div *ngSwitchCase="'oneDay'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'oneWeek'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'oneMonth'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'threeMonth'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'sixMonth'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'oneYear'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'threeYear'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+    <div *ngSwitchCase="'allTime'">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      </canvas>
+    </div>
+  </div>
+
+
 </ion-content>

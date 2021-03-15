@@ -12,10 +12,16 @@ import { ModalController } from '@ionic/angular';
 })
 export class ChartsPage implements OnInit {
 
+  price: any = [];
+  product: any = [];
+  name = [];
+  ticker = [];
+
   //Data
   chartData: ChartDataSets[] = [
-    { data: [], label: 'AAPL' },
-    { data: [50, 60, 70, 80, 90, 100, 120, 130, 40, 80], label: 'Test' },
+    { data: [], label: window.location.href.substr(window.location.href.lastIndexOf('/') + 1), fill: false },
+    { data: [10, 60, 70, 80, 90, 100, 20, 30, 40, 80, 15, 30, 45, 80, 40, 60, 50, 28, 50], label: 'Negative Sentiment', fill: false },
+    { data: [90, 40, 30, 20, 10, 0, 80, 70, 60, 20, 85, 70, 55, 20, 60, 40, 50, 72, 50], label: 'Positive Sentiment', fill: false },
   ];
   chartLabels: Label[];
 
@@ -39,7 +45,13 @@ export class ChartsPage implements OnInit {
 
   chartColors: Color[] = [
     {
-      borderColor: '#000000',
+      borderColor: '#a6a6a6',
+    },
+    {
+      borderColor: '#ff3333',
+    },
+    {
+      borderColor: '#00ff00',
     }
   ];
 
@@ -61,27 +73,46 @@ export class ChartsPage implements OnInit {
 
 
   ngOnInit() {
-    this.getData();
-
+    this.getPrice(window.location.href.substr(window.location.href.lastIndexOf('/') + 1))
+    this.getStock(window.location.href.substr(window.location.href.lastIndexOf('/') + 1))
   }
 
-  getData() {
-    this.http.get(`https://financialmodelingprep.com/api/v3/historical-price-full/${this.stock}?from=2020-03-12&to=2020-08-12&apikey=demo`)
-      .subscribe(res => {
-        console.log('Res: ', res);
-        const history = res['historical'];
+  getStock(ticker) {
+    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=c1427on48v6s4a2e2mog`)
+      .subscribe(data => {
+        console.log(data);
+        this.product = data;
+        console.log(this.product)
+
+        this.name = data['name'];
+        this.ticker = data['ticker'];
+        console.log(this.ticker);
+        console.log(this.name);
+        console.log(data['name']);
+      })
+  }
+
+
+  getPrice(ticker) {
+    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=${ticker}&resolution=D&from=1613365200&to=2000000000&token=c1427on48v6s4a2e2mog`)
+      .subscribe(pdata => {
+        const time = pdata['t']
+        const price = pdata['c']
 
         this.chartData[0].data = [];
-
         this.chartLabels = [];
 
-        for (let entry of history) {
-          this.chartLabels.push(entry.date);
-          this.chartData[0].data.push(entry['close']);
+        for (let test of time) {
+          this.chartLabels.push(test)
+          {
+            for (let test2 of price) {
+              this.chartData[0].data.push(test2);
+
+            }
+          }
         }
-        console.log('data:', this.chartData);
-        console.log('data:', this.chartLabels);
-      });
+
+      })
   }
 
   back() {

@@ -24,7 +24,7 @@ export class ChartsPage implements OnInit {
     { data: [10, 60, 70, 80, 90, 100, 20, 30, 40, 80, 15, 30, 45, 80, 40, 60, 50, 28, 50], label: 'Negative Sentiment', fill: false },
     { data: [90, 40, 30, 20, 10, 0, 80, 70, 60, 20, 85, 70, 55, 20, 60, 40, 50, 72, 50], label: 'Positive Sentiment', fill: false },
   ];
-  chartLabels: Label[];
+  chartLabels: Label[]
 
   //chart options
 
@@ -101,6 +101,9 @@ export class ChartsPage implements OnInit {
       .subscribe(pdata => {
         const time = pdata['t']
         const price = pdata['c']
+        var s = new Date(1615905294 * 1000).toLocaleDateString('en-us', { day: 'numeric', month: 'long', year: 'numeric' });
+        console.log(s)
+        console.log(time)
 
         this.chartData[0].data = [];
         this.chartLabels = [];

@@ -4,22 +4,22 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BadSentimentPageRoutingModule } from './bad-sentiment-routing.module';
+import { StocksPageRoutingModule } from './stocks-routing.module';
 
-import { BadSentimentPage } from './bad-sentiment.page';
+import { StocksPage } from './stocks.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ChartsModule } from 'ng2-charts';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BadSentimentPageRoutingModule,
+    StocksPageRoutingModule,
     ComponentsModule,
     ChartsModule,
+
   ],
-  declarations: [BadSentimentPage]
+  declarations: [StocksPage]
 })
-export class BadSentimentPageModule { }
+export class StocksPageModule {}

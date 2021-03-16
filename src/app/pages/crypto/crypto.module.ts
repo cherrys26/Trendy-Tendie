@@ -4,19 +4,22 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WelcomePageRoutingModule } from './welcome-routing.module';
+import { CryptoPageRoutingModule } from './crypto-routing.module';
 
-import { WelcomePage } from './welcome.page';
+import { CryptoPage } from './crypto.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WelcomePageRoutingModule,
-    ComponentsModule
+    CryptoPageRoutingModule,
+    ComponentsModule,
+    ChartsModule,
+
   ],
-  declarations: [WelcomePage]
+  declarations: [CryptoPage]
 })
-export class WelcomePageModule { }
+export class CryptoPageModule {}

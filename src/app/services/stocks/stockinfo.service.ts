@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -33,14 +32,13 @@ export class StockinfoService {
 
   }
   StockTwo() {
-    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=amzn&token=c1427on48v6s4a2e2mog`)
+    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=aapl&token=c1427on48v6s4a2e2mog`)
 
   }
 
-
-  searchPrice(ticker: string): Observable<any> {
+  searchPrice() {
     return this.http.get
-      (`${this.urlPrice}?symbol=${ticker}&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
+      (`${this.urlPrice}?symbol=aapl&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
       .pipe(
         map(results => results['c']
         )

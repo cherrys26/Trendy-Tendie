@@ -14,6 +14,7 @@ export class NotificationsPage implements OnInit {
   constructor(public platform: Platform,
     private popoverController: PopoverController, private loader: LoaderService) { }
 
+  alerts = "stocks";
 
 
   ngOnInit() {

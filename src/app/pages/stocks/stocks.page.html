@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Crypto</ion-title>
+    <ion-title>Stocks</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="presentPopover()">
         <ion-icon slot="icon-only" name="funnel" style="font-size: 20px;"></ion-icon>
@@ -52,20 +52,17 @@
             <ion-grid>
               <a style="text-decoration:none; color:inherit;" [routerLink]="['', tickerone]">
                 <ion-row>
-
                   <ion-col size="2.25" size-sm id="title">
                     <ion-label>
                       <h3>{{tickerone}}</h3>
-                      <br />
-                      {{nameone}}
-
+                      <h4>{{nameone}}</h4>
                     </ion-label>
                   </ion-col>
                   <ion-col size="9.75" size-sm>
                     <ion-row>
                       <ion-col size="6" size-md>
                         <ion-label>
-                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
+                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
                           </h3>
                         </ion-label>
                       </ion-col>
@@ -77,7 +74,6 @@
                       </ion-col>
                     </ion-row>
                     <ion-row>
-
                       <ion-col size="6" size-md>
                         <ion-label>
                           <h3>Change<span id="sentiment-change"> 6%</span>
@@ -92,7 +88,6 @@
                       </ion-col>
                     </ion-row>
                   </ion-col>
-
                 </ion-row>
               </a>
             </ion-grid>
@@ -101,20 +96,17 @@
             <ion-grid>
               <a style="text-decoration:none; color:inherit;" [routerLink]="['', tickertwo]">
                 <ion-row>
-
                   <ion-col size="2.25" size-sm id="title">
                     <ion-label>
                       <h3>{{tickertwo}}</h3>
-                      <br />
-                      {{nametwo}}
-
+                      <h4>{{nametwo}}</h4>
                     </ion-label>
                   </ion-col>
                   <ion-col size="9.75" size-sm>
                     <ion-row>
                       <ion-col size="6" size-md>
                         <ion-label>
-                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
+                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
                           </h3>
                         </ion-label>
                       </ion-col>
@@ -126,7 +118,6 @@
                       </ion-col>
                     </ion-row>
                     <ion-row>
-
                       <ion-col size="6" size-md>
                         <ion-label>
                           <h3>Change<span id="sentiment-change"> 6%</span>
@@ -141,7 +132,6 @@
                       </ion-col>
                     </ion-row>
                   </ion-col>
-
                 </ion-row>
               </a>
             </ion-grid>
@@ -150,20 +140,17 @@
             <ion-grid>
               <a style="text-decoration:none; color:inherit;" [routerLink]="['', ticker3]">
                 <ion-row>
-
                   <ion-col size="2.25" size-sm id="title">
                     <ion-label>
                       <h3>{{ticker3}}</h3>
-                      <br />
-                      {{name3}}
-
+                      <h4>{{name3}}</h4>
                     </ion-label>
                   </ion-col>
                   <ion-col size="9.75" size-sm>
                     <ion-row>
                       <ion-col size="6" size-md>
                         <ion-label>
-                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
+                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
                           </h3>
                         </ion-label>
                       </ion-col>
@@ -175,7 +162,6 @@
                       </ion-col>
                     </ion-row>
                     <ion-row>
-
                       <ion-col size="6" size-md>
                         <ion-label>
                           <h3>Change<span id="sentiment-change"> 6%</span>
@@ -190,7 +176,6 @@
                       </ion-col>
                     </ion-row>
                   </ion-col>
-
                 </ion-row>
               </a>
             </ion-grid>
@@ -223,7 +208,138 @@
     <div *ngSwitchCase="'bad'">
       <div [ngSwitch]="timeline">
         <div *ngSwitchCase="'oneDay'">
-          one day
+          <ion-item-divider>
+            <ion-grid>
+              <a style="text-decoration:none; color:inherit;" [routerLink]="['', Negtickerone]">
+                <ion-row>
+                  <ion-col size="2.25" size-sm id="title">
+                    <ion-label>
+                      <h3>{{Negtickerone}}</h3>
+                      <h4>{{Negnameone}}</h4>
+                    </ion-label>
+                  </ion-col>
+                  <ion-col size="9.75" size-sm>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Price<span id="price"> ${{Negpriceone}}</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="sentiment-change"> 6%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="price-change"> 31%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </a>
+            </ion-grid>
+          </ion-item-divider>
+          <ion-item-divider>
+            <ion-grid>
+              <a style="text-decoration:none; color:inherit;" [routerLink]="['', Negtickertwo]">
+                <ion-row>
+                  <ion-col size="2.25" size-sm id="title">
+                    <ion-label>
+                      <h3>{{Negtickertwo}}</h3>
+                      <h4>{{Negnametwo}}</h4>
+                    </ion-label>
+                  </ion-col>
+                  <ion-col size="9.75" size-sm>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Price<span id="price"> ${{Negpricetwo}}</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="sentiment-change"> 6%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="price-change"> 31%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </a>
+            </ion-grid>
+          </ion-item-divider>
+          <ion-item-divider>
+            <ion-grid>
+              <a style="text-decoration:none; color:inherit;" [routerLink]="['', Negticker3]">
+                <ion-row>
+                  <ion-col size="2.25" size-sm id="title">
+                    <ion-label>
+                      <h3>{{Negticker3}}</h3>
+                      <h4>{{Negname3}}</h4>
+                    </ion-label>
+                  </ion-col>
+                  <ion-col size="9.75" size-sm>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Price<span id="price"> ${{Negprice3}}</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="sentiment-change"> 6%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="price-change"> 31%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </a>
+            </ion-grid>
+          </ion-item-divider>
         </div>
         <div *ngSwitchCase="'oneWeek'">
           one Week

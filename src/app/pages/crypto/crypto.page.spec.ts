@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ChatSupportComponent } from './chat-support.component';
+import { CryptoPage } from './crypto.page';
 
-describe('ChatSupportComponent', () => {
-  let component: ChatSupportComponent;
-  let fixture: ComponentFixture<ChatSupportComponent>;
+describe('CryptoPage', () => {
+  let component: CryptoPage;
+  let fixture: ComponentFixture<CryptoPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatSupportComponent ],
+      declarations: [ CryptoPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChatSupportComponent);
+    fixture = TestBed.createComponent(CryptoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

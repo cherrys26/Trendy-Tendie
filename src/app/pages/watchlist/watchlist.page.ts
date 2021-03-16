@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { LoaderService } from 'src/app/services/loader/loader.service';
-import { StockinfoService } from 'src/app/services/stockinfo.service';
+import { StockinfoService } from 'src/app/services/stocks/stockinfo.service';
 
 @Component({
   selector: 'app-watchlist',
@@ -20,7 +20,7 @@ export class WatchlistPage implements OnInit {
   data = null;
   testData: any = [];
   product: any = [];
-  twoData = null;
+  twoData: any = '';
   searchTerm: string = '';
   finalsearchproduct: string;
 
@@ -34,6 +34,8 @@ export class WatchlistPage implements OnInit {
   ngOnInit() {
     this.getStockOne();
     this.loading();
+    this.getStockTwo();
+    this.searchPrice();
   }
 
   HasSearch: boolean;
@@ -68,11 +70,11 @@ export class WatchlistPage implements OnInit {
   }
 
   getStockTwo() {
-    this.stockService.StockTwo().subscribe(test => { this.twoData = console.log(test) })
+    this.stockService.StockTwo().subscribe(test => { this.twoData = test })
   }
 
-  searchChange() {
-    this.stockService.searchPrice(this.searchTerm).subscribe(price => { this.testData = console.log(price[0]) });
+  searchPrice() {
+    this.stockService.searchPrice().subscribe(price => { this.testData = price[0] });
 
   }
 

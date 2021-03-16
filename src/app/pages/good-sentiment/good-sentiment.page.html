@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen (onload)="searchChanged()">
+<ion-content fullscreen>
   <ion-segment [(ngModel)]="goodBad">
     <ion-segment-button value="good" class="label">
       <ion-label>
@@ -28,6 +28,13 @@
       <ion-buttons slot="start">
         <ion-button>
           <ion-icon slot="icon-only" name="filter-outline" style="font-size: 20px;"></ion-icon>
+          <ion-select interface="popover">
+            <ion-select-option>Sentiment</ion-select-option>
+            <ion-select-option>Sentiment Change</ion-select-option>
+            <ion-select-option>Price</ion-select-option>
+            <ion-select-option>Price Change</ion-select-option>
+            <ion-select-option>Name</ion-select-option>
+          </ion-select>
         </ion-button>
       </ion-buttons>
       <ion-select interface="popover" [(ngModel)]="timeline" slot="end">
@@ -43,11 +50,15 @@
         <div *ngSwitchCase="'oneDay'">
           <ion-item-divider>
             <ion-grid>
-              <a style="text-decoration:none; color:inherit;" [routerLink]="['charts']">
+              <a style="text-decoration:none; color:inherit;" [routerLink]="['', tickerone]">
                 <ion-row>
+
                   <ion-col size="2.25" size-sm id="title">
-                    <ion-label *ngIf="data">
-                      <h3>{{data.ticker}}</h3>
+                    <ion-label>
+                      <h3>{{tickerone}}</h3>
+                      <br />
+                      {{nameone}}
+
                     </ion-label>
                   </ion-col>
                   <ion-col size="9.75" size-sm>
@@ -60,7 +71,7 @@
                       </ion-col>
                       <ion-col size="6" size-md>
                         <ion-label>
-                          <h3>Price<span id="price"> $3018.18</span>
+                          <h3>Price<span id="price"> ${{priceone}}</span>
                           </h3>
                         </ion-label>
                       </ion-col>
@@ -81,6 +92,105 @@
                       </ion-col>
                     </ion-row>
                   </ion-col>
+
+                </ion-row>
+              </a>
+            </ion-grid>
+          </ion-item-divider>
+          <ion-item-divider>
+            <ion-grid>
+              <a style="text-decoration:none; color:inherit;" [routerLink]="['', tickertwo]">
+                <ion-row>
+
+                  <ion-col size="2.25" size-sm id="title">
+                    <ion-label>
+                      <h3>{{tickertwo}}</h3>
+                      <br />
+                      {{nametwo}}
+
+                    </ion-label>
+                  </ion-col>
+                  <ion-col size="9.75" size-sm>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Price<span id="price"> ${{pricetwo}}</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="sentiment-change"> 6%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="price-change"> 31%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+
+                </ion-row>
+              </a>
+            </ion-grid>
+          </ion-item-divider>
+          <ion-item-divider>
+            <ion-grid>
+              <a style="text-decoration:none; color:inherit;" [routerLink]="['', ticker3]">
+                <ion-row>
+
+                  <ion-col size="2.25" size-sm id="title">
+                    <ion-label>
+                      <h3>{{ticker3}}</h3>
+                      <br />
+                      {{name3}}
+
+                    </ion-label>
+                  </ion-col>
+                  <ion-col size="9.75" size-sm>
+                    <ion-row>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Price<span id="price"> ${{price3}}</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="sentiment-change"> 6%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                      <ion-col size="6" size-md>
+                        <ion-label>
+                          <h3>Change<span id="price-change"> 31%</span>
+                          </h3>
+                        </ion-label>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+
                 </ion-row>
               </a>
             </ion-grid>
@@ -88,7 +198,6 @@
         </div>
         <div *ngSwitchCase="'oneWeek'">
           one Week
-
         </div>
         <div *ngSwitchCase="'oneMonth'">
           One Mont

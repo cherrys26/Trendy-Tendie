@@ -1,8 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { StockinfoService } from 'src/app/services/stockinfo.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { PopoverComponent } from '../../components/popover/stock-crypto-filter/popover.component';
 
 
@@ -13,21 +12,82 @@ import { PopoverComponent } from '../../components/popover/stock-crypto-filter/p
 })
 export class GoodSentimentPage implements OnInit {
 
-  results: Observable<any>;
-  data = null;
-  searchTerm: string = '';
+  nameone = '';
+  tickerone = '';
+  priceone = '';
+  nametwo = '';
+  tickertwo = '';
+  pricetwo = '';
+  name3 = '';
+  ticker3 = '';
+  price3 = '';
 
-  constructor(public popoverController: PopoverController,
-    private stockService: StockinfoService,
-    private router: Router) {
-  }
+  product: any = [];
 
   timeline = "oneDay";
   goodBad = "good";
 
-  ngOnInit() {
-    console.log(this.stockService.stockName);
+  constructor(public popoverController: PopoverController,
+    private http: HttpClient, private loader: LoaderService) {
+  }
 
+  getStockOne() {
+    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=tsla&token=c1427on48v6s4a2e2mog`)
+      .subscribe(data => {
+        this.product = data;
+
+        this.nameone = data['name'];
+        this.tickerone = data['ticker'];
+      })
+  }
+  getPriceOne() {
+    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=tsla&resolution=D&from=1615352400&to=2000000000&token=c1427on48v6s4a2e2mog`)
+      .subscribe(pdata => {
+        this.priceone = pdata['c'][0];
+
+      })
+  }
+  getStocktwo() {
+    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=amzn&token=c1427on48v6s4a2e2mog`)
+      .subscribe(data => {
+        this.product = data;
+
+        this.nametwo = data['name'];
+        this.tickertwo = data['ticker'];
+      })
+  }
+  getPricetwo() {
+    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=amzn&resolution=D&from=1615352400&to=2000000000&token=c1427on48v6s4a2e2mog`)
+      .subscribe(pdata => {
+        this.pricetwo = pdata['c'][0];
+
+      })
+  }
+  getStock3() {
+    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=gme&token=c1427on48v6s4a2e2mog`)
+      .subscribe(data => {
+        this.product = data;
+
+        this.name3 = data['name'];
+        this.ticker3 = data['ticker'];
+      })
+  }
+  getPrice3() {
+    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=gme&resolution=D&from=1615352400&to=2000000000&token=c1427on48v6s4a2e2mog`)
+      .subscribe(pdata => {
+        this.price3 = pdata['c'][0];
+
+      })
+  }
+
+  ngOnInit() {
+    this.getStockOne()
+    this.getPriceOne()
+    this.getStocktwo()
+    this.getPricetwo()
+    this.getStock3()
+    this.getPrice3()
+    this.loading()
   }
 
   async presentPopover(ev: any) {
@@ -40,27 +100,11 @@ export class GoodSentimentPage implements OnInit {
     return await popover.present();
   }
 
-  // searchChanged() {
-  //   this.stockService.stockOne().subscribe(result => {
-  //     this.data = result;
-  //   });
-  //   console.log(this.stockService);
-  //   console.log(this.stockService.stockOne());
-  //   console.log(this.stockService);
-  // }
-
-
-  searchChange() {
-    this.results = this.stockService.searchPrice(this.searchTerm);
-    console.log(this.results)
-    console.log(this.stockService)
-    console.log(this.stockService.searchPrice)
-    console.log(this.searchTerm)
-  }
-
-  navigate() {
-    this.router.navigate(['charts'])
+  loading() {
+    this.loader.presentLoadingWithOptions()
   }
 
 
 }
+
+

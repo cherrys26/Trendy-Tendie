@@ -16,8 +16,8 @@ export class StockinfoService {
   name = []
   ticker = []
 
-  startDate = '1615352400';
-  endDate = '1615438800';
+  startDate = '1615093200';
+  endDate = '1615179600';
 
   stockName: "AAPL"
 
@@ -28,22 +28,23 @@ export class StockinfoService {
     return this.http.get(`${this.urlName}?symbol=${encodeURI(ticker)}&token=${this.apiKey}`)
   }
 
-  getStock() {
-    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=tsla&token=c1427on48v6s4a2e2mog`)
-      .subscribe(data => {
-        this.product = data;
+  StockOne() {
+    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=tsla&token=c1427on48v6s4a2e2mog`)
 
-        this.name = data['name'];
-        this.ticker = data['ticker'];
-      })
+  }
+  StockTwo() {
+    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=amzn&token=c1427on48v6s4a2e2mog`)
+
   }
 
 
   searchPrice(ticker: string): Observable<any> {
     return this.http.get
-      (`${this.urlPrice}?symbol=${encodeURI(ticker)}&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
+      (`${this.urlPrice}?symbol=${ticker}&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
       .pipe(
-        map(results => results['c'])
+        map(results => results['c']
+        )
+
       );
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { StockinfoService } from 'src/app/services/stockinfo.service';
 
 @Component({
@@ -17,17 +18,22 @@ export class WatchlistPage implements OnInit {
 
   results: Observable<any>;
   data = null;
+  testData: any = [];
+  product: any = [];
+  twoData = null;
   searchTerm: string = '';
   finalsearchproduct: string;
 
 
   constructor(public platform: Platform,
-    private stockService: StockinfoService) { }
+    private stockService: StockinfoService, private loader: LoaderService) { }
 
   homepage = "watchlist";
   timeline = "oneDay";
 
   ngOnInit() {
+    this.getStockOne();
+    this.loading();
   }
 
   HasSearch: boolean;
@@ -51,14 +57,27 @@ export class WatchlistPage implements OnInit {
   }
   searchChanged() {
     this.stockService.searchStock(this.searchTerm).subscribe(result => { this.data = result });
-    console.log(this.searchTerm);
+
   }
+
+  getStockOne() {
+    this.stockService.StockOne().subscribe(res => {
+      this.product = res;
+      console.log(res)
+    });
+  }
+
+  getStockTwo() {
+    this.stockService.StockTwo().subscribe(test => { this.twoData = console.log(test) })
+  }
+
   searchChange() {
-    this.results = this.stockService.searchPrice(this.searchTerm);
-    console.log(this.results)
-    console.log(this.stockService)
-    console.log(this.stockService.searchPrice)
-    console.log(this.searchTerm)
+    this.stockService.searchPrice(this.searchTerm).subscribe(price => { this.testData = console.log(price[0]) });
+
+  }
+
+  loading() {
+    this.loader.presentLoadingWithOptions()
   }
 
   public devWidth = this.platform.width();

@@ -43,22 +43,6 @@ export class SearchbarComponent implements OnInit {
         console.log('data:', this.stockTitle);
         console.log('data:', this.stockSymbol);
       });
-
-    this.http.get(`https://finnhub.io/api/v1/quote?symbol=${this.stockSymbol}&token=c1427on48v6s4a2e2mog`)
-      .subscribe(res => {
-        this.stockClosePrice = []
-        this.stockOpenPrice = []
-        this.stockPrices = []
-
-        this.stockClosePrice.push(res['c']);
-        this.stockOpenPrice.push(res['o']);
-        this.stockPrices.push(res);
-
-        console.log('data: ', this.stockClosePrice);
-        console.log('data: ', this.stockOpenPrice);
-        console.log('data: ', this.stockPrices);
-
-      })
   }
 
   // Having multiple price lines is not possible with free api calls for now

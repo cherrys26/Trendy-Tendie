@@ -4,6 +4,7 @@ import { NavController, Platform } from '@ionic/angular';
 import { ChartDataSets } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { ModalController } from '@ionic/angular';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-charts',
@@ -68,13 +69,15 @@ export class ChartsPage implements OnInit {
   constructor(public platform: Platform,
     public navCtrl: NavController,
     private http: HttpClient,
-    private modalCtrl: ModalController) {
+    private modalCtrl: ModalController,
+    private loader: LoaderService) {
   }
 
 
   ngOnInit() {
     this.getPrice(window.location.href.substr(window.location.href.lastIndexOf('/') + 1))
     this.getStock(window.location.href.substr(window.location.href.lastIndexOf('/') + 1))
+    this.loading()
   }
 
   getStock(ticker) {
@@ -121,5 +124,7 @@ export class ChartsPage implements OnInit {
     });
   }
 
-
+  loading() {
+    this.loader.presentLoadingWithOptions()
+  }
 }

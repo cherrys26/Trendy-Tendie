@@ -11,8 +11,8 @@ import { PopoverComponent } from '../../components/popover/stock-crypto-filter/p
 })
 export class CryptoPage implements OnInit {
 
-  Negnameone = '';
-  Negtickerone = '';
+  cryptoTickerOne = '';
+  cryptorNameOne = '';
   Negpriceone = '';
   Negnametwo = '';
   Negtickertwo = '';
@@ -22,6 +22,7 @@ export class CryptoPage implements OnInit {
   Negprice3 = '';
 
   product: any = [];
+  productOne: any = [];
 
   timeline = "oneDay";
   goodBad = "good";
@@ -30,13 +31,10 @@ export class CryptoPage implements OnInit {
     private http: HttpClient, private loader: LoaderService) {
   }
 
-  getNegStockOne() {
-    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=amc&token=c1427on48v6s4a2e2mog`)
+  getPositiveCrytoOne() {
+    this.http.get(`https://api.nomics.com/v1/currencies/ticker?key=044633c835474c720d369694b2ac93a5&ids=BTC&interval=1d&per-page=100&page=1`)
       .subscribe(data => {
-        this.product = data;
-
-        this.Negnameone = data['name'];
-        this.Negtickerone = data['ticker'];
+        this.productOne = data[0];
       })
   }
   getNegPriceOne() {
@@ -80,7 +78,7 @@ export class CryptoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getNegStockOne()
+    this.getPositiveCrytoOne()
     this.getNegPriceOne()
     this.getNegStocktwo()
     this.getNegPricetwo()

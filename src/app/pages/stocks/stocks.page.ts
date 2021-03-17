@@ -11,25 +11,19 @@ import { PopoverComponent } from '../../components/popover/stock-crypto-filter/p
 })
 export class StocksPage implements OnInit {
 
-  nameone = '';
-  tickerone = '';
   priceone = '';
-  nametwo = '';
-  tickertwo = '';
   pricetwo = '';
-  name3 = '';
-  ticker3 = '';
   price3 = '';
-  Negnameone = '';
-  Negtickerone = '';
   Negpriceone = '';
-  Negnametwo = '';
-  Negtickertwo = '';
   Negpricetwo = '';
-  Negname3 = '';
-  Negticker3 = '';
   Negprice3 = '';
-  product: any = [];
+  producttwo: any = [];
+  productone: any = [];
+  productthree: any = [];
+  negproductone: any = [];
+  negproducttwo: any = [];
+  negproductthree: any = [];
+
 
   timeline = "oneDay";
   goodBad = "good";
@@ -41,10 +35,7 @@ export class StocksPage implements OnInit {
   getStockOne() {
     this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=tsla&token=c1427on48v6s4a2e2mog`)
       .subscribe(data => {
-        this.product = data;
-
-        this.nameone = data['name'];
-        this.tickerone = data['ticker'];
+        this.productone = data;
       })
   }
   getPriceOne() {
@@ -57,10 +48,7 @@ export class StocksPage implements OnInit {
   getStocktwo() {
     this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=amzn&token=c1427on48v6s4a2e2mog`)
       .subscribe(data => {
-        this.product = data;
-
-        this.nametwo = data['name'];
-        this.tickertwo = data['ticker'];
+        this.producttwo = data;
       })
   }
   getPricetwo() {
@@ -73,10 +61,7 @@ export class StocksPage implements OnInit {
   getStock3() {
     this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=gme&token=c1427on48v6s4a2e2mog`)
       .subscribe(data => {
-        this.product = data;
-
-        this.name3 = data['name'];
-        this.ticker3 = data['ticker'];
+        this.productthree = data;
       })
   }
   getPrice3() {
@@ -90,10 +75,7 @@ export class StocksPage implements OnInit {
   getNegStockOne() {
     this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=amc&token=c1427on48v6s4a2e2mog`)
       .subscribe(data => {
-        this.product = data;
-
-        this.Negnameone = data['name'];
-        this.Negtickerone = data['ticker'];
+        this.negproductone = data;
       })
   }
   getNegPriceOne() {
@@ -106,10 +88,7 @@ export class StocksPage implements OnInit {
   getNegStocktwo() {
     this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=mu&token=c1427on48v6s4a2e2mog`)
       .subscribe(data => {
-        this.product = data;
-
-        this.Negnametwo = data['name'];
-        this.Negtickertwo = data['ticker'];
+        this.negproducttwo = data;
       })
   }
   getNegPricetwo() {
@@ -122,10 +101,7 @@ export class StocksPage implements OnInit {
   getNegStock3() {
     this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=chwy&token=c1427on48v6s4a2e2mog`)
       .subscribe(data => {
-        this.product = data;
-
-        this.Negname3 = data['name'];
-        this.Negticker3 = data['ticker'];
+        this.negproductthree = data;
       })
   }
   getNegPrice3() {

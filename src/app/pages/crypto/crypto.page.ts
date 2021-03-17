@@ -11,18 +11,18 @@ import { PopoverComponent } from '../../components/popover/stock-crypto-filter/p
 })
 export class CryptoPage implements OnInit {
 
-  cryptoTickerOne = '';
-  cryptorNameOne = '';
-  Negpriceone = '';
-  Negnametwo = '';
-  Negtickertwo = '';
-  Negpricetwo = '';
-  Negname3 = '';
-  Negticker3 = '';
-  Negprice3 = '';
-
-  product: any = [];
-  productOne: any = [];
+  pCryptoOne: any = [];
+  changeOne: any = '';
+  pCryptoTwo: any = [];
+  changeTwo: any = '';
+  pCryptoThree: any = [];
+  pCryptoFour: any = [];
+  pCryptoFive: any = [];
+  nCryptoOne: any = [];
+  nCryptoTwo: any = [];
+  nCryptoThree: any = [];
+  nCryptoFour: any = [];
+  nCryptoFive: any = [];
 
   timeline = "oneDay";
   goodBad = "good";
@@ -31,59 +31,28 @@ export class CryptoPage implements OnInit {
     private http: HttpClient, private loader: LoaderService) {
   }
 
-  getPositiveCrytoOne() {
-    this.http.get(`https://api.nomics.com/v1/currencies/ticker?key=044633c835474c720d369694b2ac93a5&ids=BTC&interval=1d&per-page=100&page=1`)
+  getCrypto() {
+    this.http.get(`https://api.nomics.com/v1/currencies/ticker?key=044633c835474c720d369694b2ac93a5&interval=1d&per-page=100&page=1`)
       .subscribe(data => {
-        this.productOne = data[0];
-      })
-  }
-  getNegPriceOne() {
-    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=amc&resolution=D&from=1615352400&to=2000000000&token=c1427on48v6s4a2e2mog`)
-      .subscribe(pdata => {
-        this.Negpriceone = pdata['c'][0];
+        this.pCryptoOne = data[0];
+        this.changeOne = this.pCryptoOne['1d'].price_change_pct * 100
+        this.pCryptoTwo = data[1];
+        this.pCryptoThree = data[3];
+        this.pCryptoFour = data[2];
+        this.pCryptoFive = data[4];
 
-      })
-  }
-  getNegStocktwo() {
-    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=mu&token=c1427on48v6s4a2e2mog`)
-      .subscribe(data => {
-        this.product = data;
-
-        this.Negnametwo = data['name'];
-        this.Negtickertwo = data['ticker'];
-      })
-  }
-  getNegPricetwo() {
-    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=mu&resolution=D&from=1615352400&to=2000000000&token=c1427on48v6s4a2e2mog`)
-      .subscribe(pdata => {
-        this.Negpricetwo = pdata['c'][0];
-
-      })
-  }
-  getNegStock3() {
-    this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=chwy&token=c1427on48v6s4a2e2mog`)
-      .subscribe(data => {
-        this.product = data;
-
-        this.Negname3 = data['name'];
-        this.Negticker3 = data['ticker'];
-      })
-  }
-  getNegPrice3() {
-    this.http.get(`https://finnhub.io/api/v1/stock/candle?symbol=chwy&resolution=D&from=1615352400&to=2000000000&token=c1427on48v6s4a2e2mog`)
-      .subscribe(pdata => {
-        this.Negprice3 = pdata['c'][0];
+        this.nCryptoOne = data[94];
+        this.changeTwo = this.nCryptoOne['1d'].price_change_pct * 100
+        this.nCryptoTwo = data[99];
+        this.nCryptoThree = data[98];
+        this.nCryptoFour = data[97];
+        this.nCryptoFive = data[95];
 
       })
   }
 
   ngOnInit() {
-    this.getPositiveCrytoOne()
-    this.getNegPriceOne()
-    this.getNegStocktwo()
-    this.getNegPricetwo()
-    this.getNegStock3()
-    this.getNegPrice3()
+    this.getCrypto()
     this.loading()
   }
 

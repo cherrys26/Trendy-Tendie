@@ -43,9 +43,9 @@
 
   </ion-list>
 
-  <ion-searchbar *ngIf="HasSearch" [(ngModel)]="stock" (input)="getData($event); getPrice($event)"
-    (search)="getData($event); getPrice($event)" [(ngModel)]="searchTerm"
-    (ionChange)="searchChanged($event); searchChange($event)" placeholder="Search by Ticker"></ion-searchbar>
+  <ion-searchbar *ngIf="HasSearch" [(ngModel)]="stock" 
+    [(ngModel)]="searchTerm"
+    (ionChange)="searchChanged($event); searchPrice($event)" placeholder="Search by Ticker"></ion-searchbar>
 
 
 

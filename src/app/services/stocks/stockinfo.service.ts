@@ -27,16 +27,22 @@ export class StockinfoService {
     return this.http.get(`${this.urlName}?symbol=${encodeURI(ticker)}&token=${this.apiKey}`)
   }
 
-  StockOne() {
-    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=tsla&token=c1427on48v6s4a2e2mog`)
-
-  }
   StockTwo() {
     return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=aapl&token=c1427on48v6s4a2e2mog`)
 
   }
 
-  searchPrice() {
+  searchPrice(ticker: string) {
+    return this.http.get
+      (`${this.urlPrice}?symbol=${ticker}&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
+      .pipe(
+        map(results => results['c']
+        )
+
+      );
+  }
+
+  searchWatchlistPrice() {
     return this.http.get
       (`${this.urlPrice}?symbol=aapl&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
       .pipe(

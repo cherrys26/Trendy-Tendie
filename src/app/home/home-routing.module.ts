@@ -17,7 +17,7 @@ const routes: Routes = [
     ]
   },
   { path: 'stocks/:ticker', loadChildren: () => import('../pages/charts/stocks-chart/charts.module').then(m => m.ChartsPageModule) },
-  { path: 'crypto/:id', loadChildren: () => import('../pages/charts/crypto-chart/crypto.module').then(m => m.CryptoPageModule) },
+  { path: 'crypto/:id', loadChildren: () => import('../pages/charts/crypto-chart/crypto.module').then(m => m.CryptoPageModule) }
 ];
 
 @NgModule({

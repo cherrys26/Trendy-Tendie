@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { CrytoinfoService } from 'src/app/services/crypto/crytoinfo.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { StockinfoService } from 'src/app/services/stocks/stockinfo.service';
 
@@ -11,6 +12,8 @@ import { StockinfoService } from 'src/app/services/stocks/stockinfo.service';
 })
 export class WatchlistPage implements OnInit {
 
+  search = "stock";
+
   visible = true;
   toggle() {
     this.visible = !this.visible;
@@ -19,22 +22,25 @@ export class WatchlistPage implements OnInit {
   results: Observable<any>;
   data = null;
   testData: any = [];
+  price: any = [];
   product: any = [];
+  crypto: null;
   twoData: any = '';
   searchTerm: string = '';
   finalsearchproduct: string;
 
 
   constructor(public platform: Platform,
-    private stockService: StockinfoService, private loader: LoaderService) { }
+    private stockService: StockinfoService,
+    private cryptoService: CrytoinfoService,
+    private loader: LoaderService) { }
 
   homepage = "watchlist";
   timeline = "oneDay";
 
   ngOnInit() {
-    this.getStockOne();
     this.loading();
-    this.getStockTwo();
+    this.getWatchlist();
     this.searchPrice();
   }
 
@@ -59,27 +65,26 @@ export class WatchlistPage implements OnInit {
   }
   searchChanged() {
     this.stockService.searchStock(this.searchTerm).subscribe(result => { this.data = result });
-
   }
 
-  getStockOne() {
-    this.stockService.StockOne().subscribe(res => {
-      this.product = res;
-      console.log(res)
-    });
-  }
-
-  getStockTwo() {
+  getWatchlist() {
     this.stockService.StockTwo().subscribe(test => { this.twoData = test })
   }
 
   searchPrice() {
-    this.stockService.searchPrice().subscribe(price => { this.testData = price[0] });
+    this.stockService.searchWatchlistPrice().subscribe(price => { this.testData = price[0] });
+  }
 
+  searchChangedPrice() {
+    this.stockService.searchPrice(this.searchTerm).subscribe(price => { this.price = price[0] });
   }
 
   loading() {
     this.loader.presentLoadingWithOptions()
+  }
+
+  searchCrypto() {
+    this.cryptoService.searchCrypto(this.searchTerm).subscribe(hello => { this.crypto = hello })
   }
 
   public devWidth = this.platform.width();

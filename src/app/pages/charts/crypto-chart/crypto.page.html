@@ -46,7 +46,8 @@
         filter out*</h5>
     </ion-note>
     <div *ngSwitchCase="'oneDay'">
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [colors]="chartColors"
+        [options]="chartOptions">
       </canvas>
     </div>
     <div *ngSwitchCase="'oneWeek'">

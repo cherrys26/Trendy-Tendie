@@ -25,16 +25,9 @@
 
   <ion-list>
     <ion-item>
-      <ion-buttons slot="start">
-        <ion-button>
+      <ion-buttons slot="start" size="large">
+        <ion-button (click)="filterPopup()">
           <ion-icon slot="icon-only" name="filter-outline" style="font-size: 20px;"></ion-icon>
-          <ion-select interface="popover">
-            <ion-select-option>Sentiment</ion-select-option>
-            <ion-select-option>Sentiment Change</ion-select-option>
-            <ion-select-option>Price</ion-select-option>
-            <ion-select-option>Price Change</ion-select-option>
-            <ion-select-option>Name</ion-select-option>
-          </ion-select>
         </ion-button>
       </ion-buttons>
       <ion-select interface="popover" [(ngModel)]="timeline" slot="end">
@@ -48,144 +41,23 @@
     <div *ngSwitchCase="'good'">
       <div [ngSwitch]="timeline">
         <div *ngSwitchCase="'oneDay'">
+          <app-s-u-one></app-s-u-one>
+        </div>
+        <div *ngSwitchCase="'oneWeek'">
           <ion-item-divider>
             <ion-grid>
               <a style="text-decoration:none; color:inherit;" [routerLink]="['/stocks', productone.ticker]">
-                <ion-row>
-                  <ion-col size="2.25" size-sm id="title">
-                    <ion-label>
-                      <h3>{{productone.ticker}}</h3>
-                      <h4>{{productone.name}}</h4>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col size="9.75" size-sm>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Price<span id="price"> ${{priceone}}</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="sentiment-change"> 6%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="price-change"> 31%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
+                <app-s-d-one></app-s-d-one>
               </a>
+
             </ion-grid>
+
           </ion-item-divider>
-          <ion-item-divider>
-            <ion-grid>
-              <a style="text-decoration:none; color:inherit;" [routerLink]="['/stocks', producttwo.ticker]">
-                <ion-row>
-                  <ion-col size="2.25" size-sm id="title">
-                    <ion-label>
-                      <h3>{{producttwo.ticker}}</h3>
-                      <h4>{{producttwo.name}}</h4>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col size="9.75" size-sm>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Price<span id="price"> ${{pricetwo}}</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="sentiment-change"> 6%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="price-change"> 31%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
-              </a>
-            </ion-grid>
-          </ion-item-divider>
-          <ion-item-divider>
-            <ion-grid>
-              <a style="text-decoration:none; color:inherit;" [routerLink]="['/stocks', productthree.ticker]">
-                <ion-row>
-                  <ion-col size="2.25" size-sm id="title">
-                    <ion-label>
-                      <h3>{{productthree.ticker}}</h3>
-                      <h4>{{productthree.name}}</h4>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col size="9.75" size-sm>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Sentiment<span id="positive-sentiment"> 78%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Price<span id="price"> ${{price3}}</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="sentiment-change"> 6%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="price-change"> 31%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
-              </a>
-            </ion-grid>
-          </ion-item-divider>
-        </div>
-        <div *ngSwitchCase="'oneWeek'">
-          one Week
+
+
         </div>
         <div *ngSwitchCase="'oneMonth'">
-          One Mont
+          <app-s-u-one></app-s-u-one>
         </div>
         <div *ngSwitchCase="'threeMonths'">
           3 month
@@ -208,138 +80,7 @@
     <div *ngSwitchCase="'bad'">
       <div [ngSwitch]="timeline">
         <div *ngSwitchCase="'oneDay'">
-          <ion-item-divider>
-            <ion-grid>
-              <a style="text-decoration:none; color:inherit;" [routerLink]="['', negproductone.ticker]">
-                <ion-row>
-                  <ion-col size="2.25" size-sm id="title">
-                    <ion-label>
-                      <h3>{{negproductone.ticker}}</h3>
-                      <h4>{{negproductone.name}}</h4>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col size="9.75" size-sm>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Price<span id="price"> ${{Negpriceone}}</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="sentiment-change"> 6%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="price-change"> 31%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
-              </a>
-            </ion-grid>
-          </ion-item-divider>
-          <ion-item-divider>
-            <ion-grid>
-              <a style="text-decoration:none; color:inherit;" [routerLink]="['', negproducttwo.ticker]">
-                <ion-row>
-                  <ion-col size="2.25" size-sm id="title">
-                    <ion-label>
-                      <h3>{{negproducttwo.ticker}}</h3>
-                      <h4>{{negproducttwo.name}}</h4>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col size="9.75" size-sm>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Price<span id="price"> ${{Negpricetwo}}</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="sentiment-change"> 6%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="price-change"> 31%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
-              </a>
-            </ion-grid>
-          </ion-item-divider>
-          <ion-item-divider>
-            <ion-grid>
-              <a style="text-decoration:none; color:inherit;" [routerLink]="['', negproductthree.ticker]">
-                <ion-row>
-                  <ion-col size="2.25" size-sm id="title">
-                    <ion-label>
-                      <h3>{{negproductthree.ticker}}</h3>
-                      <h4>{{negproductthree.name}}</h4>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col size="9.75" size-sm>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Sentiment<span id="negative-sentiment"> 78%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Price<span id="price"> ${{Negprice3}}</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="sentiment-change"> 6%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                      <ion-col size="6" size-md>
-                        <ion-label>
-                          <h3>Change<span id="price-change"> 31%</span>
-                          </h3>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
-              </a>
-            </ion-grid>
-          </ion-item-divider>
+          
         </div>
         <div *ngSwitchCase="'oneWeek'">
           one Week

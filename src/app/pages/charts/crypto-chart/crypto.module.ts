@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CryptoPageRoutingModule } from './crypto-routing.module';
 
 import { CryptoPage } from './crypto.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ChartsModule } from 'ng2-charts';
     IonicModule,
     CryptoPageRoutingModule,
     ChartsModule,
+    ComponentsModule
   ],
   declarations: [CryptoPage]
 })
-export class CryptoPageModule {}
+export class CryptoPageModule { }

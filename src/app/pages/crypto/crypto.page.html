@@ -21,20 +21,14 @@
         Negative Sentiment
       </ion-label>
     </ion-segment-button>
-  </ion-segment>
+  </ion-segment>`
+  
 
   <ion-list>
     <ion-item>
       <ion-buttons slot="start">
-        <ion-button>
+        <ion-button (click)="filterPopup()">
           <ion-icon slot="icon-only" name="filter-outline" style="font-size: 20px;"></ion-icon>
-          <ion-select interface="popover">
-            <ion-select-option>Sentiment</ion-select-option>
-            <ion-select-option>Sentiment Change</ion-select-option>
-            <ion-select-option>Price</ion-select-option>
-            <ion-select-option>Price Change</ion-select-option>
-            <ion-select-option>Name</ion-select-option>
-          </ion-select>
         </ion-button>
       </ion-buttons>
       <ion-select interface="popover" [(ngModel)]="timeline" slot="end">

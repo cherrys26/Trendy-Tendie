@@ -27,7 +27,16 @@ export class CrytoinfoService {
       )
   }
 
+  searchPrice(ticker: string) {
+    return this.http.get
+      (`${this.urlPrice}?symbol=${ticker}&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
+      .pipe(
+        map(results => results['c']
+        )
+
+      );
+  }
+
 
 }
-
 

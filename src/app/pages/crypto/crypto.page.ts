@@ -24,7 +24,6 @@ export class CryptoPage implements OnInit {
   nCryptoThree: any = [];
   nCryptoFour: any = [];
   nCryptoFive: any = [];
-  crypto: any = [];
 
   timeline = "oneDay";
   goodBad = "good";
@@ -49,7 +48,7 @@ export class CryptoPage implements OnInit {
         this.nCryptoThree = data[98];
         this.nCryptoFour = data[97];
         this.nCryptoFive = data[95];
-        this.crypto = data
+
       })
   }
 
@@ -67,7 +66,6 @@ export class CryptoPage implements OnInit {
     });
     return await popover.present();
   }
-
 
   async filterPopup(ev: any) {
     const popover = await this.popoverController.create({

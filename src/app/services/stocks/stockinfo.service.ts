@@ -32,9 +32,23 @@ export class StockinfoService {
 
   }
 
+  getStock(ticker: string){
+    return this.http.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=c1427on48v6s4a2e2mog`)
+  }
+
   searchPrice(ticker: string) {
     return this.http.get
       (`${this.urlPrice}?symbol=${ticker}&resolution=D&from=${this.startDate}&to=${this.endDate}&token=${this.apiKey}`)
+      .pipe(
+        map(results => results['c']
+        )
+
+      );
+  }
+  
+  getPrice(ticker: string) {
+    return this.http.get
+      (`https://finnhub.io/api/v1/stock/candle?symbol=${ticker}&resolution=D&from=1615093200&to=1615179600&token=c1427on48v6s4a2e2mog`)
       .pipe(
         map(results => results['c']
         )

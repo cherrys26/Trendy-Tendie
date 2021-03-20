@@ -68,7 +68,7 @@ export class WatchlistPage implements OnInit {
   }
 
   getWatchlist() {
-    this.stockService.StockTwo().subscribe(test => { this.twoData = test })
+    this.stockService.getStock('aapl').subscribe(test => { this.twoData = test })
   }
 
   searchPrice() {

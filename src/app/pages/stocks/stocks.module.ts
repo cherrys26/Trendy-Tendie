@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { StocksPageRoutingModule } from './stocks-routing.module';
 
 import { StocksPage } from './stocks.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({

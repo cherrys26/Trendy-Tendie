@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { WatchlistPageRoutingModule } from './watchlist-routing.module';
 
 import { WatchlistPage } from './watchlist.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [

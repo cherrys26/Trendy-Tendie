@@ -2,6 +2,27 @@ ion-title {
     padding: 0;
 }
 
-// ion-searchbar {
-//     text-transform: uppercase;
-// }
+ion-col {
+    align-self: center;
+}
+
+ion-list {
+    padding: 0px;
+}
+
+#image {
+    text-align: right;
+}
+
+#positive-change {
+    color: rgb(0, 255, 0);
+}
+#negative-change {
+    color: rgb(0, 255, 0);
+}
+#negative-sentiment {
+    color: rgb(255, 0, 0);
+}
+#positive-sentiment {
+    color: rgb(0, 255, 0);
+}
